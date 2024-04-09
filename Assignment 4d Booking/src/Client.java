@@ -6,6 +6,5 @@ public class Client {
     public Client(String name, int age) {
         this.name = name;
         this.age = age;
-
     }
 }

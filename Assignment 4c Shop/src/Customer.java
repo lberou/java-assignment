@@ -13,7 +13,7 @@ public class Customer {
         } else if (choice.equals("remove")) {
             shoppingCart.removeProduct(product);
 
-        } else System.out.println("Λάθος Επιλογή");
+        } System.out.println("Λάθος Επιλογή");
     }
 
     public void checkout() {

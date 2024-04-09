@@ -7,7 +7,7 @@ public class ShoppingCart {
             return "Το όνομα του προιόντος που μπήκε στο καλάθι είναι: " + productName;
         } else if (choice.equals("remove")) {
             return "Tο όνομα του προιόντος αφαιρέθηκε απο το καλάθι είναι: " + productName;
-        } else return "κάτι πήγε λάθος";
+        } return "κάτι πήγε λάθος";
     }
 
 
@@ -19,7 +19,7 @@ public class ShoppingCart {
             String printInfo = printInformation("add");
             System.out.println(printInfo);
 
-        } else printInformation("λάθος");
+        } printInformation("λάθος");
     }
 
     public void removeProduct(Product product) {
@@ -30,16 +30,15 @@ public class ShoppingCart {
             product.quantity = 1;
             this.product = null;
 
-        } else printInformation("λάθος");
+        } printInformation("λάθος");
 
     }
 
     public void printCheckout() {
         if (product != null) {
             System.out.println("Η τιμή του προιοντος που είναι στο καλάθι είναι: " + product.price);
-        } else System.out.println("Το καλάθι είναι άδειο");
+        } System.out.println("Το καλάθι είναι άδειο");
 
     }
-
 
 }

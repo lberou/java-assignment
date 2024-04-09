@@ -15,7 +15,7 @@ public class Hotel {
             } else if (room2.isAvailable) {
                 client.room = room2;
                 room2.isAvailable = false;
-            } else System.out.println("No room available");
+            } System.out.println("No room available");
         }
     }
 
