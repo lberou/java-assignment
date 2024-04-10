@@ -9,44 +9,38 @@ public class Management {
 
 
     public void showMenu() {
-
+        Scanner scanner = new Scanner(System.in);
         int input;
+
 
         do {
 
-            do {
+            System.out.println("Menu:\n" + "1.Add New Student\n" + "2.Update Student Grade\n" + "3.Remove a Student\n" + "4.Display Students\n" + "5.Exit\n" + "Please select 1-5");
+            input = scanner.nextInt();
 
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Menu:\n" + "1.Add New Student\n" + "2.Update Student Grade\n" + "3.Remove a Student\n" + "4.Display Students\n" + "5.Exit\n" + "Please select 1-5");
-                input = scanner.nextInt();
+            switch (input) {
+                case 1:
+                    addStudents(scanner);
+                    break;
+                case 2:
+                    updateGrade(scanner);
+                    break;
+                case 3:
+                    removingStudent(scanner);
+                    break;
+                case 4:
+                    System.out.println(displayStudents());
+                    break;
+                case 5:
+                    System.out.println("arrivederci");
+            }
 
-                switch (input) {
-                    case 1:
-                        addStudents(scanner);
-                        break;
-                    case 2:
-                        updateGrade(scanner);
-                        break;
-                    case 3:
-                        removingStudent(scanner);
-                        break;
-                    case 4:
-                        System.out.println(displayStudents());
-                        break;
-                    case 5:
-                        System.out.println("arrivederci");
-                }
-
-            } while (input > 5);
-
-
-        }  while ( input != 5);
-//        while ( input != 5 && scanner.hasNextInt());
+        } while (input != 5);
 
     }
 
     public void addStudents(Scanner scanner) {
-//        scanner = new Scanner(System.in);
+
         int studentId;
         String studentName;
         System.out.println("Enter your ID: ");
@@ -73,18 +67,19 @@ public class Management {
                     students[j].id = studentId;
                     students[j].name = studentName;
                     capacity--; //reduce capacity at each save
+                    break;
                 }
             }
-            scanner.close();
+
 
         } else
             System.out.println("Database is full. Cannot add student."); // if capacity is full can't register new student
-        scanner.close();
+
     }
 
 
     public void updateGrade(Scanner scanner) {
-//        scanner = new Scanner(System.in);
+
         int studentId;
         double studentGrade;
 
@@ -98,13 +93,16 @@ public class Management {
         for (int i = 0; i <= students.length; i++) {
             if (students[i] != null && studentId == students[i].id) { //if student exists update Grade
                 students[i].grade = studentGrade;
+                System.out.println("User with id " + students[i].id + " updated its grade to " + students[i].grade);
+                break;
             } else System.out.println("User is not registered.Cannot update your Grade.");
+            break;
         }
-        scanner.close();
+
     }
 
     public void removingStudent(Scanner scanner) {
-//        scanner = new Scanner(System.in);
+
         System.out.println("Enter your user Id.");
         int studentId = scanner.nextInt();
 
@@ -112,13 +110,13 @@ public class Management {
             if (students[i] != null && studentId == students[i].id) {
                 students[i] = null;
                 capacity++;
-
-            }
+                System.out.println("User with id: " + studentId + " removed from database");
+                break;
+            } else System.out.println("User not registered.Cannot delete user that is not registered.");
+            break;
         }
-        System.out.println("User not registered.Cannot delete user that is not registered.");
-        scanner.close();
-    }
 
+    }
 
     public String displayStudents() {
         if (students == null) {
@@ -129,7 +127,8 @@ public class Management {
             if (students[i] == null) {
                 continue;
             }
-            str.append(" ").append(students[i]);
+            str.append("ID: ").append(students[i].id).append(" ").append("Name: ").append(students[i].name).append(" ")
+                    .append("Grade: ").append(students[i].grade).append("\n");
         }
         return str.toString();
 
