@@ -28,29 +28,23 @@ public class Agency implements AgencyActions {
 
     public String rentVehicle(int customerId, String licencePlate) {
 
-        for (int i = 0; i < customers.size(); i++)  {
-            for (int j = 0; j < vehicles.size(); j++)  {
-
-                 if (customers.get(i).id == customerId && vehicles.get(j).licencePlate.equals(licencePlate)) {
-                   return  customers.get(i).rentVehicle(vehicles.get(j));
+        for (int i = 0; i < customers.size(); i++) {
+            for (int j = 0; j < vehicles.size(); j++) {
+                if (customers.get(i).id == customerId && vehicles.get(j).licencePlate.equals(licencePlate)) {
+                    return customers.get(i).rentVehicle(vehicles.get(j));
                 }
-
+            }
         }
-
-    }
         return "can't rent it wrong id or wrong licence plate";
     }
 
     public String returnVehicle(int customerId, String licencePlate) {
         for (int i = 0; i < customers.size(); i++) {
             for (int j = 0; j < vehicles.size(); j++) {
-
                 if (customers.get(i).id == customerId && vehicles.get(j).licencePlate.equals(licencePlate)) {
-                   return customers.get(i).returnVehicle(vehicles.get(j));
+                    return customers.get(i).returnVehicle(vehicles.get(j));
                 }
-
             }
-
         }
         return "can't return it wrong id or wrong licence plate";
     }

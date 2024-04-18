@@ -7,7 +7,6 @@ public abstract class Vehicle implements Rentable {
         this.pricePerDay = pricePerDay;
         this.licencePlate = licencePlate;
         isAvailable = true;
-
     }
 
     abstract String getVehicleInfo();
