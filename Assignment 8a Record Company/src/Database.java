@@ -13,15 +13,7 @@ public class Database {
         return releases;
     }
 
-    public List<Releases> getReleasesByType(String type) {
-        List<Releases> releasesByType = new ArrayList<>();
-        for (Releases release : releases) {
-            if (release.getType().equals(type)) {
-                releasesByType.add(release);
-            }
-        }
-        return releasesByType;
-    }
+
 
     public List<Artist> getArtists() {
         return artists;

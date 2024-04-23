@@ -188,7 +188,7 @@ public class UserMenu {
 
         String typeOfRelease = release.getType();
         try {
-            if ((typeOfRelease.equals("cd") && database.getReleasesByType("cd").size() > Releases.getMaxCd()) || (typeOfRelease.equals("mp3") && database.getReleasesByType("mp3").size() > Releases.getMaxMp3())) {
+            if ((typeOfRelease.equals("cd") && release.getSongs().size() > Releases.getMaxCd()) || (typeOfRelease.equals("mp3") && release.getSongs().size() > Releases.getMaxMp3())) {
                 throw new MaxSongsException("Max Songs reached ");
             }
 
