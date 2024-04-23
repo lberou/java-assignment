@@ -1,19 +1,32 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Customer implements CustomerActions {
 
-    int id;
-    String name;
-    ArrayList<Vehicle> rentedVehicles = new ArrayList<Vehicle>();
+    private int id;
+    private String name;
+    private List<Vehicle> rentedVehicles;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Vehicle> getRentedVehicles() {
+        return rentedVehicles;
+    }
 
     public Customer(int id, String name) {
         this.name = name;
         this.id = id;
+        rentedVehicles = new ArrayList<>();
     }
 
 
     public String rentVehicle(Vehicle vehicle) {
-        if (vehicle.isAvailable()) {
+        if (!rentedVehicles.contains(vehicle) && vehicle.isAvailable()) {
             rentedVehicles.add(vehicle);
             vehicle.setAvailable(false);
             return vehicle.getVehicleInfo() + " rented by customer with id: " + id;
@@ -27,6 +40,6 @@ public class Customer implements CustomerActions {
         return vehicle.getVehicleInfo() + " returned by customer with id: " + id;
     }
 
-    //TODO equals and hashcode na rwtisw Panteli
+
 
 }

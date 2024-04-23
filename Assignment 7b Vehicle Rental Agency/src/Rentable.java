@@ -1,7 +1,7 @@
 public interface Rentable {
-    public double getPricePerDay();
+    double getPricePerDay();
 
-    public boolean isAvailable();
+    boolean isAvailable();
 
-    public void setAvailable(boolean available);
+    void setAvailable(boolean available);
 }

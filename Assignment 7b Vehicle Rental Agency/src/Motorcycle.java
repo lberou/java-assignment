@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Motorcycle extends Vehicle {
 
     String brand;
@@ -11,5 +13,17 @@ public class Motorcycle extends Vehicle {
         return brand + " motorcycle with licence plate " + licencePlate + " and price per day " + getPricePerDay();
     }
 
-    //TODO equals and hashcode na rwtisw Panteli
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Motorcycle that = (Motorcycle) o;
+        return Objects.equals(brand, that.brand);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), brand);
+    }
 }
