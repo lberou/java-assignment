@@ -40,22 +40,23 @@ public class Agency implements AgencyActions {
     public String rentVehicle(int customerId, String licencePlate) {
 
         if (customers == null) {
-            System.out.println("Customer List empty");
+            return "Customer List empty";
         }
 
-        if (vehicles == null) {
-            System.out.println("Vehicle List empty");
+        else if (vehicles == null) {
+            return "Vehicle List empty";
         }
 
-
-        for (int i = 0; i < customers.size(); i++) {
-            for (int j = 0; j < vehicles.size(); j++) {
-                if (customers.get(i).getId() == customerId && vehicles.get(j).licencePlate.equals(licencePlate)) {
-                    return customers.get(i).rentVehicle(vehicles.get(j));
+        else {
+            for (int i = 0; i < customers.size(); i++) {
+                for (int j = 0; j < vehicles.size(); j++) {
+                    if (customers.get(i).getId() == customerId && vehicles.get(j).licencePlate.equals(licencePlate)) {
+                        return customers.get(i).rentVehicle(vehicles.get(j));
+                    }
                 }
             }
+            return "can't rent it wrong id or wrong licence plate";
         }
-        return "can't rent it wrong id or wrong licence plate";
     }
 
     public String returnVehicle(int customerId, String licencePlate) {
