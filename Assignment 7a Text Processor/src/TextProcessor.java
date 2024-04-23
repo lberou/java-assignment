@@ -56,10 +56,21 @@ public class TextProcessor {
     public void printTextWithReplacedWord(String text, String replacedWord, String replaceWith) {
         String[] textSplit = text.split(" ");
 
-        ArrayList<String> textList = new ArrayList<String>(
-                Arrays.asList(textSplit));
 
-        Collections.replaceAll(textList, replacedWord, replaceWith);
+//        ArrayList<String> textList = new ArrayList<String>(
+//                Arrays.asList(textSplit));
+
+        List<String> textList = new ArrayList<>();
+
+//        Collections.replaceAll(textList, replacedWord, replaceWith);
+
+        for (String word : textSplit) {
+            if (word.equals(replacedWord))
+                textList.add(replaceWith);
+            else
+                textList.add(word);
+        }
+
 
         for (String s : textList)
             System.out.print(s + " ");
